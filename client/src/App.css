@@ -1,13 +1,10 @@
-.App {
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.main-color{
+  background-color: rgb(53, 50, 53);
 }
 
 .header{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7), url(./Images/ImageDecor/image-00.png));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7), url('./Images/ImageDecor/image-00.png'));
 }
 
 .carousel-img{
@@ -17,9 +14,38 @@
 
 .carousel-prev, .carousel-next{
   color: red;
-  filter: invert(1);
+  filter: invert(0);
 }
 
-.main-color{
-  background-color: rgb(53, 50, 53);
+.book-div{
+  width: 480px;
+  height: 384px;
+}
+
+.col-image-left{
+  background-image: url('./Images/ImageDecor/image-01.png');
+  height: 25em !important;
+  height: 150px;
+}
+
+.col-image-right{
+  background-image: url('./Images/ImageDecor/image-02.png');
+  height: 25em !important;
+}
+
+.homepage-carousel-title{
+  display: flex !important;
+  justify-self: center !important;
+  align-items: center !important;
+}
+
+.lost-image{
+  background-image: url('./Images/ImageDecor/image-03.png');
+  height: 25em !important;
+  width: 720px;
+}
+
+.btn:hover{
+  text-decoration: none;
+  background-color: #035981;
 }
