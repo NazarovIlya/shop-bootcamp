@@ -1,22 +1,23 @@
 .App {
   text-align: center;
-  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
-  /* flex-direction: column;
-  align-items: center; */
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-a {
-  color: rgb(233, 233, 233);
-  text-decoration: none;
+.header{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7), url(./Images/ImageDecor/image-00.png));
 }
 
-a:hover {
-  color: rgb(128, 128, 108);
+.carousel-img{
+  height: 230px;
+  width: 150px;
+}
+
+.carousel-prev, .carousel-next{
+  color: red;
+  filter: invert(1);
 }
 
 .main-color{

@@ -8,7 +8,7 @@ function NavigationBar() {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
-          ariA-aria-controls="navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
           aria-expanded="false"
           aria-label="Toggle Navigation"
         >
