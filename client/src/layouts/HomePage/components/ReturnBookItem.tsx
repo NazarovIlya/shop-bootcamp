@@ -3,7 +3,7 @@ function ReturnBookItem() {
     <div className="col-xs-6 col-sm-6 colmd-4 col-lg-3 mb-3">
       <div className="text-center">
         <img
-          className="image-carousel"
+          className="image-carousel image-img"
           src={require("./../../../Images/ImageDecor/image-01.png")}
           alt="book_photo"
         />
