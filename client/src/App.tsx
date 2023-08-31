@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+import NavigationBar from "./layouts/NavigationAndFooter/NavigationBar";
 
 function App() {
   return (
     <div className="App">
-      <a href="/">Hello Books App</a>
+      <NavigationBar />
     </div>
   );
 }

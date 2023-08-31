@@ -1,10 +1,10 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* flex-direction: column;
+  align-items: center; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -17,4 +17,8 @@ a {
 
 a:hover {
   color: rgb(128, 128, 108);
+}
+
+.main-color{
+  background-color: rgb(53, 50, 53);
 }

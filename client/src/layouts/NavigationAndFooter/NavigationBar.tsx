@@ -27,6 +27,8 @@ function NavigationBar() {
                 Поиск
               </a>
             </li>
+          </ul>
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item m-1">
               <a type="button" className="btn btn-outline-light" href="#">
                 Вход
