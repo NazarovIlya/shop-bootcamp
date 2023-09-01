@@ -24,7 +24,7 @@ function CallAction() {
           <div className="col-4 md-4 container d-flex justufy-content-center align-items-center">
             <div className="ml-2">
               <h1>Текст 2</h1>
-              <p className="lead">Еще текст 1</p>
+              <p className="lead">Еще текст 2</p>
               <a
                 className="btn btn-jg main-color text-white"
                 type="button"
@@ -56,7 +56,7 @@ function CallAction() {
             </div>
             <div className="mt-2">
               <h1>Текст 2</h1>
-              <p className="lead">Еще текст 1</p>
+              <p className="lead">Еще текст 2</p>
               <a
                 className="btn btn-jg main-color text-white"
                 type="button"
