@@ -1,5 +1,3 @@
-import Carousel from "./Carousel";
-
 function ExloreBooks() {
   return (
     <div className="p-2 mb-4 bg-dark header">
@@ -12,7 +10,6 @@ function ExloreBooks() {
           </a>
         </div>
       </div>
-      <Carousel />
     </div>
   );
 }

@@ -3,8 +3,8 @@ function ReturnBookItem() {
     <div className="col-xs-6 col-sm-6 colmd-4 col-lg-3 mb-3">
       <div className="text-center">
         <img
-          className="image-carousel image-img"
-          src={require("./../../../Images/ImageDecor/image-01.png")}
+          className="image-carousel carousel-img"
+          src={require("./../../../Images/ImagesBooks/book_001.png")}
           alt="book_photo"
         />
         <h6>Книга</h6>
