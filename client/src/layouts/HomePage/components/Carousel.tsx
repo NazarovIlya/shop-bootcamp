@@ -59,7 +59,7 @@ function Carousel() {
           <ReturnBookItem />
         </div>
       </div>
-      <div className="homepage-carousel-title mt-2">
+      <div className="homepage-carousel-title mt-2 mb-5">
         <a className="btn btn-outline-secondary btn-lg" href="/">
           Подробности
         </a>
