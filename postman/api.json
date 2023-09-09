@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "98b00913-4b86-401e-8606-335e7812a673",
+		"_postman_id": "63a585db-2107-43d0-86ef-a36d69227ff1",
 		"name": "Shop App",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17367059"
@@ -163,6 +163,169 @@
 						{
 							"key": "size",
 							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find product by title",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}api/products/search/findByTitleContaining?title=Продукт 11&page=0&size=2",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"products",
+						"search",
+						"findByTitleContaining"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Продукт 11"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find product by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host/api [products, reviews]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all reviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/reviews",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all reviews page size",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/reviews?page=0&size=2",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find reviews by product id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/reviews/search/findByProductId?productId=1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"reviews",
+						"search",
+						"findByProductId"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find reviews by user email & product id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/reviews/search/findByUserEmailAndProductId?userEmail=user_1@ksergei.tech&productId=1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"reviews",
+						"search",
+						"findByUserEmailAndProductId"
+					],
+					"query": [
+						{
+							"key": "userEmail",
+							"value": "user_1@ksergei.tech"
+						},
+						{
+							"key": "productId",
+							"value": "1"
 						}
 					]
 				}
