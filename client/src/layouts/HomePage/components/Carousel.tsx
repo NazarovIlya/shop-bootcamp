@@ -1,6 +1,6 @@
+import { useState, useEffect } from "react";
 import ReturnBookItem from "./ReturnBookItem";
 import Book from "../../../models/Book";
-import { useState, useEffect } from "react";
 import SpinnerLoading from "../../Utils/SpinnerLoading";
 
 function Carousel() {
@@ -11,7 +11,7 @@ function Carousel() {
   useEffect(() => {
     const fetchBooks = async () => {
       const baseUrl = `${process.env.REACT_APP_API_URL}/products`;
-      const url = `${baseUrl}?page=0ssize=3`;
+      const url = `${baseUrl}?page=0size=3`;
       const response = await fetch(url);
 
       if (!response.ok) {
@@ -82,7 +82,7 @@ function Carousel() {
               ))}
             </div>
           </div>
-          <div className="carousel-item active">
+          <div className="carousel-item">
             <div className="row d-flex justify-content-center align-items-center">
               {books.slice(2, 3).map((item) => (
                 <ReturnBookItem book={item} key={item.id} />
