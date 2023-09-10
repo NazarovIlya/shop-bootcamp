@@ -1,6 +1,25 @@
 import ReturnBookItem from "./ReturnBookItem";
+import Book from "../../../models/Book";
+import { useState, useEffect } from "react";
+import SpinnerLoading from "../../Utils/SpinnerLoading";
 
 function Carousel() {
+  const [books, setBooks] = useState<Book[]>([]);
+  const [loading, setIsLoading] = useState<boolean>(true);
+  const [httpError, setHttpError] = useState<any>(null);
+
+  if (loading) {
+    return <SpinnerLoading />;
+  }
+
+  if (httpError) {
+    return (
+      <div className="container m-5">
+        <p>{httpError}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="container mt-3 carousel-container">
       <div className="homepage-carousel-title">
