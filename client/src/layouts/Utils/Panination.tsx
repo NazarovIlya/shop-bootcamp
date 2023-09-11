@@ -18,7 +18,7 @@ function Pagination(arg: Props) {
   } else if (arg.currentPage > 1) {
     if (arg.currentPage >= 3) {
       pageNumbers.push(arg.currentPage - 2);
-      pageNumbers.push(arg.paginate - 1);
+      pageNumbers.push(arg.currentPage - 1);
     } else {
       pageNumbers.push(arg.currentPage - 1);
     }
@@ -46,7 +46,7 @@ function Pagination(arg: Props) {
               "page-item" + (arg.currentPage === number ? "active" : "")
             }
           >
-            <button className="pagelink">{number}</button>
+            <button className="page-link">{number}</button>
           </li>
         ))}
         <li className="page-item" onClick={() => arg.paginate(arg.totalPages)}>

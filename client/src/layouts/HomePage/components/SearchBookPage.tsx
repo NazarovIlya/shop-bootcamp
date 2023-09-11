@@ -13,12 +13,12 @@ function SearchBooksPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalAmountOfBooks, setTotalAmountOfBooks] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const booksPerPage = Number(process.env.REACT_APP_API_COUNT_BOOKS_PER_PAGE);
+  const booksPerPage = 2;
 
   useEffect(() => {
     const fetchBooks = async () => {
       const baseUrl = `${process.env.REACT_APP_API_URL}/products`;
-      const url = `${baseUrl}?page${currentPage - 1}&size${booksPerPage}`;
+      const url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
 
       const response = await fetch(url);
 
@@ -82,83 +82,85 @@ function SearchBooksPage() {
     <div>
       <div className="container">
         <div>
-          <div className="row mt-5 col-6">
-            <div className="d-flex">
-              <input
-                type="search"
-                className="form-control"
-                placeholder="Поиск"
-                aria-labelledby="Search"
-                onClick={(e) => {}}
-              />
-              <button className="btn btn-outline-success" onClick={(e) => {}}>
-                Найти
-              </button>
+          <div className="row mt-5">
+            <div className="col-6">
+              <div className="d-flex">
+                <input
+                  type="search"
+                  className="form-control me-2"
+                  placeholder="Поиск"
+                  aria-labelledby="Search"
+                  onClick={(e) => {}}
+                />
+                <button className="btn btn-outline-success" onClick={(e) => {}}>
+                  Найти
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="col-4">
-            <div className="dropdown">
-              <button
-                type="button"
-                className="btn btn-secondary dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Категория
-              </button>
-              <ul className="dropdown-menu">
-                <li onClick={(e) => {}}>
-                  <a href="/" className="dropdown-item">
-                    Категория 1
-                  </a>
-                </li>
-                <li onClick={(e) => {}}>
-                  <a href="/" className="dropdown-item">
-                    Категория 2
-                  </a>
-                </li>
-                <li onClick={(e) => {}}>
-                  <a href="/" className="dropdown-item">
-                    Категория 3
-                  </a>
-                </li>
-                <li onClick={(e) => {}}>
-                  <a href="/" className="dropdown-item">
-                    Категория 4
-                  </a>
-                </li>
-                {/* <li onClick={(e) => {}}>
+            <div className="col-4">
+              <div className="dropdown">
+                <button
+                  type="button"
+                  className="btn btn-secondary dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Категория
+                </button>
+                <ul className="dropdown-menu">
+                  <li onClick={(e) => {}}>
+                    <a href="/" className="dropdown-item">
+                      Категория 1
+                    </a>
+                  </li>
+                  <li onClick={(e) => {}}>
+                    <a href="/" className="dropdown-item">
+                      Категория 2
+                    </a>
+                  </li>
+                  <li onClick={(e) => {}}>
+                    <a href="/" className="dropdown-item">
+                      Категория 3
+                    </a>
+                  </li>
+                  <li onClick={(e) => {}}>
+                    <a href="/" className="dropdown-item">
+                      Категория 4
+                    </a>
+                  </li>
+                  {/* <li onClick={(e) => {}}>
                   <a href="/" className="dropdown-item">
                     Категория 5
                   </a>
                 </li> */}
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
+          {totalAmountOfBooks > 0 ? (
+            <>
+              <div className="mt-3">
+                <h5>Всего книг: {totalAmountOfBooks}</h5>
+              </div>
+              <p>
+                На странице: {indexOfFirstBook + 1} .. {lastItem} из{" "}
+                {totalAmountOfBooks}
+              </p>
+              {books.map((item) => (
+                <SearchBookItem book={item} />
+              ))}
+            </>
+          ) : (
+            <LibraryServices />
+          )}
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              paginate={paginate}
+            />
+          )}
         </div>
-        {totalAmountOfBooks > 0 ? (
-          <>
-            <div className="mt-3">
-              <h5>Всего книг:{totalAmountOfBooks}</h5>
-            </div>
-            <p>
-              На странице: {indexOfFirstBook + 1} .. {lastItem} из{" "}
-              {totalAmountOfBooks}
-            </p>
-            {books.map((item) => (
-              <SearchBookItem book={item} />
-            ))}
-          </>
-        ) : (
-          <LibraryServices />
-        )}
-        {totalPages > 1 && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            paginate={paginate}
-          />
-        )}
       </div>
     </div>
   );

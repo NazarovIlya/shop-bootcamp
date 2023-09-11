@@ -39,18 +39,18 @@ function SearchBookItem({ book }: Props) {
               />
             )}
           </div>
-          <div className="col-md-6">
-            <div className="card-body">
-              <h5 className="card-title">{book.creator}</h5>
-              <h4>book.title</h4>
-              <p className="card-text">{book.description}</p>
-            </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card-body">
+            <h5 className="card-title">{book.creator}</h5>
+            <h4>{book.title}</h4>
+            <p className="card-text">{book.description}</p>
           </div>
-          <div className="col-md-4 d-flex justify-content-center align-content-center">
-            <a href="/" className="btn btn-md main-color text-center">
-              More...
-            </a>
-          </div>
+        </div>
+        <div className="col-md-4 d-flex justify-content-center align-items-center">
+          <a href="/" className="btn btn-md main-color text-white">
+            More...
+          </a>
         </div>
       </div>
     </div>
