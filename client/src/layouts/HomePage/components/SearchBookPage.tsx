@@ -76,6 +76,8 @@ function SearchBooksPage() {
       ? booksPerPage * currentPage
       : totalAmountOfBooks;
 
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <div className="container">
