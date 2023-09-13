@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import Book from "../../../models/Book";
-import SpinnerLoading from "../../Utils/SpinnerLoading";
-import SearchBookItem from "./SearchBookItem";
-import LibraryServices from "./LibraryService";
-import Pagination from "../../Utils/Panination";
+import Book from "../../models/Book";
+import SpinnerLoading from "../Utils/SpinnerLoading";
+import SearchBookItem from "./components/SearchBookItem";
+import LibraryServices from "./components/LibraryService";
+import Pagination from "../Utils/Panination";
 
 function SearchBooksPage() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -13,12 +13,28 @@ function SearchBooksPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalAmountOfBooks, setTotalAmountOfBooks] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const booksPerPage = 2;
+
+  const [search, setSearch] = useState("");
+  const [booksPerPage] = useState(2);
+  // const booksPerPage = 2;
+  const [searchUrl, setSearchUrl] = useState("");
+
+  const [categorySelection, setCategorySelection] = useState("all");
 
   useEffect(() => {
     const fetchBooks = async () => {
       const baseUrl = `${process.env.REACT_APP_API_URL}/products`;
-      const url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
+      let url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
+
+      if (searchUrl === "") {
+        url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
+      } else {
+        let searchWithPage = searchUrl.replace(
+          "<pageNumber>",
+          `${currentPage - 1}`
+        );
+        url = `${baseUrl}${searchWithPage}`;
+      }
 
       const response = await fetch(url);
 
@@ -55,7 +71,7 @@ function SearchBooksPage() {
       setHttpError(err.message);
     });
     window.scrollTo(0, 0);
-  }, [currentPage]);
+  }, [currentPage, searchUrl]);
 
   if (loading) {
     return <SpinnerLoading />;
@@ -68,6 +84,49 @@ function SearchBooksPage() {
       </div>
     );
   }
+
+  const searchHandleChange = () => {
+    setCurrentPage(1);
+    if (search === "") {
+      setSearchUrl("");
+    } else {
+      setSearchUrl(
+        `/search/findByTitleContaining?title=${search}&page=<pageNumber>&size=${booksPerPage}`
+      );
+    }
+    setCategorySelection("all");
+  };
+
+  const categoryField = (value: string) => {
+    setCurrentPage(1);
+    if (
+      value.toLowerCase() === "category_1" ||
+      value.toLowerCase() === "category_2" ||
+      value.toLowerCase() === "category_3" ||
+      value.toLowerCase() === "category_4"
+    ) {
+      setCategorySelection(value);
+      setSearchUrl(
+        `/search/findByTitleCategory?category=${value}&page-<pageNumber>&size=${booksPerPage}`
+      );
+    } else {
+      setCategorySelection("all");
+      setSearchUrl(`?page=<pageNumber>&size=${booksPerPage}`);
+    }
+  };
+
+  const fullNameCategoryTitle = (shotName: string) => {
+    const comparison = new Map<string, string>();
+
+    comparison.set("category_1", "Категория 1");
+    comparison.set("category_2", "Категория 2");
+    comparison.set("category_3", "Категория 3");
+    comparison.set("category_4", "Категория 4");
+    comparison.set("category_5", "Категория 5");
+    comparison.set("all", "Все категории");
+
+    return comparison.get(shotName.toLowerCase());
+  };
 
   const indexOfLastBook: number = currentPage * booksPerPage;
   const indexOfFirstBook: number = indexOfLastBook - booksPerPage;
@@ -90,9 +149,16 @@ function SearchBooksPage() {
                   className="form-control me-2"
                   placeholder="Поиск"
                   aria-labelledby="Search"
-                  onClick={(e) => {}}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
                 />
-                <button className="btn btn-outline-success" onClick={(e) => {}}>
+                <button
+                  className="btn btn-outline-success"
+                  onClick={(e) => {
+                    searchHandleChange();
+                  }}
+                >
                   Найти
                 </button>
               </div>
@@ -105,31 +171,56 @@ function SearchBooksPage() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Категория
+                  {fullNameCategoryTitle(categorySelection)}
                 </button>
                 <ul className="dropdown-menu">
-                  <li onClick={(e) => {}}>
-                    <a href="/" className="dropdown-item">
+                  <li
+                    onClick={(e) => {
+                      categoryField("all");
+                    }}
+                  >
+                    <a className="dropdown-item" href="#">
+                      Все
+                    </a>
+                  </li>
+                  <li
+                    onClick={(e) => {
+                      categoryField("category_1");
+                    }}
+                  >
+                    <a href="#" className="dropdown-item">
                       Категория 1
                     </a>
                   </li>
-                  <li onClick={(e) => {}}>
-                    <a href="/" className="dropdown-item">
+                  <li
+                    onClick={(e) => {
+                      categoryField("category_2");
+                    }}
+                  >
+                    <a href="#" className="dropdown-item">
                       Категория 2
                     </a>
                   </li>
-                  <li onClick={(e) => {}}>
-                    <a href="/" className="dropdown-item">
+                  <li
+                    onClick={(e) => {
+                      categoryField("category_3");
+                    }}
+                  >
+                    <a href="#" className="dropdown-item">
                       Категория 3
                     </a>
                   </li>
-                  <li onClick={(e) => {}}>
-                    <a href="/" className="dropdown-item">
+                  <li
+                    onClick={(e) => {
+                      categoryField("category_4");
+                    }}
+                  >
+                    <a href="#" className="dropdown-item">
                       Категория 4
                     </a>
                   </li>
-                  {/* <li onClick={(e) => {}}>
-                  <a href="/" className="dropdown-item">
+                  {/* <li onClick={(e) => {categoryField("category_5");}}>
+                  <a href="#" className="dropdown-item">
                     Категория 5
                   </a>
                 </li> */}

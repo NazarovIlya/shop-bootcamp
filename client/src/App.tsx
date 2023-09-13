@@ -4,7 +4,7 @@ import NavigationBar from "./layouts/NavigationAndFooter/NavigationBar";
 import HomePage from "./layouts/HomePage/HopePage";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Footer from "./layouts/HomePage/components/Footer";
-import SearchBooksPage from "./layouts/HomePage/components/SearchBookPage";
+import SearchBooksPage from "./layouts/HomePage/SearchBookPage";
 
 function App() {
   return (
