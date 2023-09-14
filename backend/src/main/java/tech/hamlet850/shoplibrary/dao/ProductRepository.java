@@ -9,11 +9,11 @@ import tech.hamlet850.shoplibrary.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-  Page<Product> findByTitleContaining(
-      @RequestParam("title") String title,
-      Pageable pageable);
+        Page<Product> findByTitleContaining(
+                        @RequestParam("title") String title,
+                        Pageable pageable);
 
-  Page<Product> findByCategory(
-      @RequestParam("category") String category,
-      Pageable pageable);
+        Page<Product> findByCategory(
+                        @RequestParam("category") String category,
+                        Pageable pageable);
 }

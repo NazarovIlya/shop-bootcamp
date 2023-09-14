@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Book from "../../Book";
+import Book from "../../../models/Book";
 
 interface Props {
   book: Book | undefined;
