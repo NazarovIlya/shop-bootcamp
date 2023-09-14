@@ -3,6 +3,7 @@ import Book from "../../models/Book";
 import SpinnerLoading from "../Utils/SpinnerLoading";
 import RatingReview from "../Utils/RatingReview";
 import CheckoutAndReviewBox from "./components/CheckoutAndReviewBox";
+import { log } from "console";
 
 function BookCheckoutPage() {
   const [book, setBook] = useState<Book>();
@@ -15,9 +16,10 @@ function BookCheckoutPage() {
 
   useEffect(() => {
     const fetchBook = async () => {
-      const url = `${process.env.REACT_APP_URL}/products/${bookId};`;
+      const url = `${process.env.REACT_APP_API_URL}/products/${bookId};`;
 
       const response = await fetch(url);
+      console.log(response);
 
       if (!response.ok) {
         throw new Error("Ошибка загрузки");
@@ -42,6 +44,7 @@ function BookCheckoutPage() {
     fetchBook().catch((err: any) => {
       setIsLoading(false);
       setHttpError(err.message);
+      console.log(`Error - ${err.message}`);
     });
   }, []);
 
