@@ -2,36 +2,36 @@ interface Props {
   rating: number;
 }
 
-function RatingReview(arg: Props) {
+function StarReview(arg: Props) {
   let imgSize = 20;
   let rating = arg.rating;
 
-  let fillRating = 0;
-  let halfRating = 0;
-  let emptyRating = 0;
+  let fillStars = 0;
+  let halfStars = 0;
+  let emptyStars = 0;
 
   if (rating !== undefined && rating > 0 && rating <= 5) {
     for (let i = 0; i <= 4; i++) {
       if (rating - 1 >= 0) {
-        fillRating = fillRating + 1;
+        fillStars = fillStars + 1;
         rating -= 1;
       } else if (rating === 0.5) {
-        halfRating = halfRating + 1;
+        halfStars = halfStars + 1;
         rating -= 0.5;
       } else if (rating === 0) {
-        emptyRating += 1;
+        emptyStars += 1;
       } else {
         break;
       }
     }
   } else {
-    emptyRating = 5;
+    emptyStars = 5;
   }
 
   return (
     <div>
       <div>Рейтинг:</div>
-      {Array.from({ length: fillRating }, (_, i) => (
+      {Array.from({ length: fillStars }, (_, i) => (
         <svg
           key={i}
           xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ function RatingReview(arg: Props) {
         </svg>
       ))}
 
-      {Array.from({ length: halfRating }, (_, i) => (
+      {Array.from({ length: halfStars }, (_, i) => (
         <svg
           key={i}
           xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ function RatingReview(arg: Props) {
         </svg>
       ))}
 
-      {Array.from({ length: emptyRating }, (_, i) => (
+      {Array.from({ length: emptyStars }, (_, i) => (
         <svg
           key={i}
           xmlns="http://www.w3.org/2000/svg"
@@ -79,4 +79,4 @@ function RatingReview(arg: Props) {
   );
 }
 
-export default RatingReview;
+export default StarReview;
