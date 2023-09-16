@@ -1,7 +1,7 @@
 import CallAction from "./components/CallAction";
 import Carousel from "./components/Carousel";
 import ExloreBooks from "./components/EploreBooks";
-import Footer from "./components/Footer";
+import Footer from "../NavigationAndFooter/Footer";
 import LibraryServices from "./components/LibraryService";
 
 function HomePage() {

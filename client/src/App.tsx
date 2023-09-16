@@ -1,15 +1,15 @@
 import React from "react";
 import "./App.css";
 import NavigationBar from "./layouts/NavigationAndFooter/NavigationBar";
-import HomePage from "./layouts/HomePage/HopePage";
+import HomePage from "./layouts/HomePage/HomePage";
+import Footer from "./layouts/NavigationAndFooter/Footer";
+import SearchBooksPage from "./layouts/SearchBookPage/SearchBookPage";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import Footer from "./layouts/HomePage/components/Footer";
-import SearchBooksPage from "./layouts/HomePage/SearchBookPage";
 import BookCheckoutPage from "./layouts/BookCheckoutPage/BookCheckoutPage";
 import { OktaAuth, toRelativeUrl } from "@okta/okta-auth-js";
 import { LoginCallback, Security } from "@okta/okta-react";
-import { oktaConfig } from "./config/OktaConfig";
 import LoginWidget from "./Auth/LoginWidget";
+import { oktaConfig } from "./config/OktaConfig";
 
 const oktaAuth = new OktaAuth(oktaConfig);
 
