@@ -16,7 +16,6 @@ function SearchBooksPage() {
 
   const [search, setSearch] = useState("");
   const [booksPerPage] = useState(2);
-  // const booksPerPage = 2;
   const [searchUrl, setSearchUrl] = useState("");
 
   const [categorySelection, setCategorySelection] = useState("all");

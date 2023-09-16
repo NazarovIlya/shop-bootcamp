@@ -1,5 +1,5 @@
 import Review from "../../models/Review";
-import RatingReview from "./RatingReview";
+import StarReview from "./StarsReview";
 interface Props {
   review: Review;
 }
@@ -14,7 +14,7 @@ function Feedback(arg: Props) {
         <div className="row">
           <div className="col">{date}</div>
           <div className="col">
-            <RatingReview rating={arg.review.rating} />
+            <StarReview rating={arg.review.rating} />
           </div>
         </div>
         <div className="mt-2">
