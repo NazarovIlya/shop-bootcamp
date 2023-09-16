@@ -1,13 +1,17 @@
 package tech.hamlet850.shoplibrary.entity;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import lombok.Data;
-import java.sql.Date;
 
 @Entity
 @Table(name = "review")
@@ -23,10 +27,11 @@ public class Review {
   private String userEmail;
 
   @Column(name = "date")
+  @CreationTimestamp
   private Date date;
 
-  @Column(name = "raiting")
-  private Long raiting;
+  @Column(name = "rating")
+  private double raiting;
 
   @Column(name = "product_id")
   private Long productId;

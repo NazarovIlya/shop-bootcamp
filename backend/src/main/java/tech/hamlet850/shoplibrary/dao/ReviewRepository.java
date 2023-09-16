@@ -9,8 +9,9 @@ import tech.hamlet850.shoplibrary.entity.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
-  Page<Review> findByRepository(@RequestParam("productId") Long productId, Pageable pageable);
+  Page<Review> findByProductId(@RequestParam("productId") Long productId,
+      Pageable pageable);
 
-  Page<Review> findByUserEmailAndProductId(String userEmail, Long productId);
+  Review findByUserEmailAndProductId(String userEmail, Long productId);
 
 }

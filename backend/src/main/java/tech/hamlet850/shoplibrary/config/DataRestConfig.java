@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import tech.hamlet850.shoplibrary.entity.Product;
+import tech.hamlet850.shoplibrary.entity.Review;
 
 @Configuration
 public class DataRestConfig implements RepositoryRestConfigurer {
@@ -19,8 +20,10 @@ public class DataRestConfig implements RepositoryRestConfigurer {
     };
 
     config.exposeIdsFor(Product.class);
+    config.exposeIdsFor(Review.class);
 
     disableHttpMethods(Product.class, config, unsupportedActions);
+    disableHttpMethods(Review.class, config, unsupportedActions);
 
     cors.addMapping(config.getBasePath() + "/**").allowedOrigins(clientUrl);
   }
