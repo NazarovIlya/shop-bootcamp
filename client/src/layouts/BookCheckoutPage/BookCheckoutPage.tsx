@@ -3,22 +3,29 @@ import Book from "../../models/Book";
 import SpinnerLoading from "../Utils/SpinnerLoading";
 import StarReview from "../Utils/StarsReview";
 import CheckoutAndReviewBox from "./components/CheckoutAndReviewBox";
+import Review from "../../models/Review";
+import LatestReviews from "./components/LatestReviews";
 
 function BookCheckoutPage() {
   const [book, setBook] = useState<Book>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [httpError, setHttpError] = useState<any>(null);
 
-  const bookId = window.location.pathname.split("/")[2];
+  // const bookId = window.location.pathname.split("/")[2];
 
-  let testRating = 3;
+  // let testRating = 3;
+
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [totalStars, setTotalStars] = useState<number>(0);
+  const [isLoadingReview, setIsLoadingReviews] = useState<boolean>(true);
+
+  const productId = window.location.pathname.split("/")[2];
 
   useEffect(() => {
     const fetchBook = async () => {
-      const url = `${process.env.REACT_APP_API_URL}/products/${bookId};`;
+      const url = `${process.env.REACT_APP_API_URL}/products/${productId};`;
 
       const response = await fetch(url);
-      console.log(response);
 
       if (!response.ok) {
         throw new Error("Ошибка загрузки");
@@ -45,9 +52,54 @@ function BookCheckoutPage() {
       setHttpError(err.message);
       console.log(`Error - ${err.message}`);
     });
-  }, []);
+  }, [productId]);
 
-  if (isLoading) {
+  useEffect(() => {
+    const fetchBookReviews = async () => {
+      const reviewUrl: string = `${process.env.REACT_APP_API_URL}/reviews/search/findByProductId?productId=${productId}`;
+
+      const responseReviews = await fetch(reviewUrl);
+
+      if (!responseReviews.ok) {
+        throw new Error("Ошибка загрузки");
+      }
+
+      const responseJsonReviews = await responseReviews.json();
+      const responseData = responseJsonReviews._embedded.reviews;
+
+      const loadedReviews: Review[] = [];
+      let weightedStarReviews: number = 0;
+
+      for (const key in responseData) {
+        loadedReviews.push({
+          id: responseData[key].id,
+          userEmail: responseData[key].userEmail,
+          date: responseData[key].date,
+          rating: responseData[key].rating,
+          productId: responseData[key].productId,
+          reviewDescription: responseData[key].reviewDescription,
+        });
+        weightedStarReviews = weightedStarReviews + responseData[key].rating;
+      }
+
+      if (loadedReviews) {
+        const round = (
+          Math.round((weightedStarReviews / loadedReviews.length) * 2) / 2
+        ).toFixed(1);
+        setTotalStars(Number(round));
+      }
+
+      setReviews(loadedReviews);
+      setIsLoadingReviews(false);
+    };
+
+    fetchBookReviews().catch((err: any) => {
+      setIsLoadingReviews(false);
+      setHttpError(err.message);
+    });
+  }, [productId]);
+
+  if (isLoading || isLoadingReview) {
     return <SpinnerLoading />;
   }
 
@@ -83,11 +135,18 @@ function BookCheckoutPage() {
               <h2>{book?.title}</h2>
               <h5 className="text-primary">{book?.creator}</h5>
               <p className="lead">{book?.description}</p>
-              <StarReview rating={testRating} />
+              <StarReview rating={totalStars} />
             </div>
           </div>
           <CheckoutAndReviewBox book={book} mobile={false} />
         </div>
+        <hr />
+        <LatestReviews
+          productId={book?.id}
+          mobile={false}
+          reviews={reviews}
+          key={book?.id}
+        />
       </div>
 
       <div className="container d-lg-none mt-5">
@@ -111,10 +170,17 @@ function BookCheckoutPage() {
             <h2>{book?.title}</h2>
             <h5 className="text-primary">{book?.creator}</h5>
             <p className="lead">{book?.description}</p>
-            <StarReview rating={testRating} />
+            <StarReview rating={totalStars} />
           </div>
         </div>
         <CheckoutAndReviewBox book={book} mobile={false} />
+        <hr />
+        <LatestReviews
+          productId={book?.id}
+          mobile={false}
+          reviews={reviews}
+          key={book?.id}
+        />
       </div>
       <hr />
     </div>
