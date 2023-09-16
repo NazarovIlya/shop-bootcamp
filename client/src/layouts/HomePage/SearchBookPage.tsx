@@ -3,7 +3,7 @@ import Book from "../../models/Book";
 import SpinnerLoading from "../Utils/SpinnerLoading";
 import SearchBookItem from "./components/SearchBookItem";
 import LibraryServices from "./components/LibraryService";
-import Pagination from "../Utils/Panination";
+import Pagination from "../Utils/Pagination";
 
 function SearchBooksPage() {
   const [books, setBooks] = useState<Book[]>([]);
