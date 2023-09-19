@@ -1,4 +1,19 @@
+import { Link, NavLink } from "react-router-dom";
+import { useOktaAuth } from "@okta/okta-react";
+import SpinnerLoading from "../Utils/SpinnerLoading";
+
 function NavigationBar() {
+  const { oktaAuth, authState } = useOktaAuth();
+
+  if (!authState) {
+    return <SpinnerLoading />;
+  }
+
+  const handleLogout = async () => {
+    oktaAuth.revokeAccessToken();
+    oktaAuth.closeSession();
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark main-color py-3">
       <div className="container-fluid">
@@ -18,22 +33,37 @@ function NavigationBar() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <NavLink className="nav-link" to="/">
                 Домашняя
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/search">
+              <NavLink className="nav-link" to="/search">
                 Поиск
-              </a>
+              </NavLink>
             </li>
           </ul>
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item m-1">
-              <a type="button" className="btn btn-outline-light" href="/">
-                Вход
-              </a>
-            </li>
+            {!authState.isAuthenticated ? (
+              <li className="nav-item m-1">
+                <NavLink
+                  type="button"
+                  className="btn btn-outline-light"
+                  to="/login"
+                >
+                  Вход
+                </NavLink>
+              </li>
+            ) : (
+              <li>
+                <button
+                  className="btn btn-outline-light"
+                  onClick={handleLogout}
+                >
+                  Выход
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>
