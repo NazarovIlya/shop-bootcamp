@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Book from "../../models/Book";
 import SpinnerLoading from "../Utils/SpinnerLoading";
-import SearchBookItem from "../HomePage/components/SearchBookItem";
+import SearchBookItem from "./components/SearchBookItem";
 import LibraryServices from "../HomePage/components/LibraryService";
 import Pagination from "../Utils/Pagination";
 
