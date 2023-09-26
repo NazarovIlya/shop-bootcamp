@@ -14,6 +14,8 @@ function NavigationBar() {
     oktaAuth.closeSession();
   };
 
+  console.log(`>>>>> ${authState.accessToken?.accessToken} <<<<<`);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark main-color py-3">
       <div className="container-fluid">
