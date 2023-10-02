@@ -4,9 +4,41 @@ import Book from "../../../models/Book";
 interface Props {
   book: Book | undefined;
   mobile: boolean;
+  currentCheckoutCount: number;
+  isCheckedOut: boolean;
+  isAuthenticated: any;
+  checkoutBook: any;
 }
 
 function CheckoutAndReviewBox(arg: Props) {
+  function buttonRender() {
+    if (arg.isAuthenticated) {
+      if (!arg.isCheckedOut) {
+        return (
+          <button
+            className="btn btn-success btn-lg"
+            onClick={() => {
+              arg.checkoutBook();
+            }}
+          >
+            В корзину
+          </button>
+        );
+      } else {
+        return (
+          <p>
+            <b>Уже в корзине</b>
+          </p>
+        );
+      }
+    }
+    return (
+      <Link to={"/login"} className="btn btn-success btn-lg">
+        Войти
+      </Link>
+    );
+  }
+
   return (
     <div
       className={
@@ -16,7 +48,7 @@ function CheckoutAndReviewBox(arg: Props) {
       <div className="card-body container">
         <div className="mt-3">
           <p>
-            <b>5</b> отзывов
+            <b>{arg.currentCheckoutCount}</b> товаров в корзине
           </p>
           <hr />
           {arg.book &&
@@ -32,9 +64,7 @@ function CheckoutAndReviewBox(arg: Props) {
             </p>
           </div>
         </div>
-        <Link className="btn btn-success btn-lg" to={""}>
-          Войти
-        </Link>
+        {buttonRender()}
         <hr />
         <p className="mt-3">
           Значение может меняться пока не будет сделан заказ
