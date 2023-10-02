@@ -162,7 +162,7 @@ VALUES (
         2,
         'user_2@ksergei.tech',
         NOW(),
-        5,
+        1,
         1,
         'Тестовый отзыв 2'
     ), (
@@ -207,6 +207,22 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB auto_increment = 1 default charset = utf8mb3;
 
+INSERT INTO
+    `shop_db`.`product_order`
+VALUES (
+        1,
+        'q@w.rt',
+        '03.03.2023',
+        '05.03.2023',
+        1
+    ), (
+        2,
+        'q@w.rt',
+        '03.03.2023',
+        '05.03.2023',
+        2
+    );
+
 SELECT * FROM `shop_db`.`product_order`;
 
 SELECT *
@@ -215,3 +231,8 @@ FROM
 WHERE
     `shop_db`.`product_order`.user_email = 'user_1@ksergei.tech'
     AND `shop_db`.`product_order`.product_id = 1;
+
+DELETE FROM
+    `shop_db`.`product_order`
+WHERE
+    `shop_db`.`product_order`.id > 0;

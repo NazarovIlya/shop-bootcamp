@@ -8,7 +8,7 @@ public class JWTParser {
 
   public static String jwtExtraction(String token, String tag) {
 
-    token.replace("Bearer", "");
+    token.replace("Bearer ", "");
 
     String[] args = token.split("\\.");
     Base64.Decoder decoder = Base64.getUrlDecoder();

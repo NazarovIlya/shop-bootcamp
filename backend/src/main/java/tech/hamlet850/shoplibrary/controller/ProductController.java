@@ -14,7 +14,7 @@ import tech.hamlet850.shoplibrary.utils.JWTParser;
 
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("api/products")
+@RequestMapping("/api/products")
 public class ProductController {
 
   private ProductService productService;

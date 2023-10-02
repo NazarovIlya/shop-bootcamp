@@ -11,7 +11,7 @@ function Carousel() {
   useEffect(() => {
     const fetchBooks = async () => {
       const baseUrl = `${process.env.REACT_APP_API_URL}/products`;
-      const url = `${baseUrl}?page=0size=3`;
+      const url = `${baseUrl}?page=0&size=3`;
       const response = await fetch(url);
 
       if (!response.ok) {
