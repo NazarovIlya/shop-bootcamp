@@ -187,7 +187,7 @@ function BookCheckoutPage() {
     };
     const checkoutResponse = await fetch(url, requestOptions);
     if (!checkoutResponse.ok) {
-      throw new Error("Ошибка!");
+      throw new Error("Ошибка");
     }
     setIsCheckedOut(true);
   }

@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.hamlet850.shoplibrary.entity.Product;
 import tech.hamlet850.shoplibrary.service.ProductService;
 import tech.hamlet850.shoplibrary.utils.JWTParser;
+import tech.hamlet850.shoplibrary.config.Environment;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(Environment.host)
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {

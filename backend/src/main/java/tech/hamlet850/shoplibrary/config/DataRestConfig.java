@@ -12,7 +12,7 @@ import tech.hamlet850.shoplibrary.entity.Review;
 @Configuration
 public class DataRestConfig implements RepositoryRestConfigurer {
 
-  private String clientUrl = Environment.getInstance().getHost();
+  private String clientUrl = Environment.host;
 
   public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
     HttpMethod[] unsupportedActions = {
