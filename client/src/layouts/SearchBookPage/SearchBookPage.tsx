@@ -106,7 +106,7 @@ function SearchBooksPage() {
     ) {
       setCategorySelection(value);
       setSearchUrl(
-        `/search/findByTitleCategory?category=${value}&page-<pageNumber>&size=${booksPerPage}`
+        `/search/findByCategory?category=${value}&page=<pageNumber>&size=${booksPerPage}`
       );
     } else {
       setCategorySelection("all");

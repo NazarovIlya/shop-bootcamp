@@ -23,7 +23,7 @@ function BookCheckoutPage() {
 
   useEffect(() => {
     const fetchBook = async () => {
-      const url = `${process.env.REACT_APP_API_URL}/products/${productId};`;
+      const url = `${process.env.REACT_APP_API_URL}/products/${productId}`;
 
       const response = await fetch(url);
 

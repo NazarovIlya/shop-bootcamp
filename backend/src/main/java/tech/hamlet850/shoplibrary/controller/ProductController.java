@@ -46,7 +46,7 @@ public class ProductController {
     return productService.orderProductByUser(userEmail, productId);
   }
 
-  @GetMapping
+  @GetMapping("/secure/currentorder/count")
   public int currentOrderCount(
       @RequestHeader(value = "Authorization") String token) {
     String userEmail = extractEmail(token, "\"sub\"");
