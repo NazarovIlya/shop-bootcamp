@@ -17,7 +17,9 @@ public class SecurityConfiguration {
     http.csrf().disable();
 
     http.authorizeRequests(configurer -> configurer
-        .antMatchers("/api/products/secure/**")
+        .antMatchers(
+            "/api/products/secure/**",
+            "/api/reviews/secure/**")
         .authenticated())
         .oauth2ResourceServer()
         .jwt();
