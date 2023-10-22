@@ -31,7 +31,7 @@ public class Review {
   private Date date;
 
   @Column(name = "rating")
-  private double raiting;
+  private double rating;
 
   @Column(name = "product_id")
   private Long productId;

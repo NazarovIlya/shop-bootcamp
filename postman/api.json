@@ -472,6 +472,83 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "secure review user product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/reviews/secure/user/product?productId=1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"reviews",
+						"secure",
+						"user",
+						"product"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "secure review user product Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rating\": 4,\n    \"productId\": 11,\n    \"reviewDescription\": \"Мой отзыв из postman\"\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/api/reviews/secure/",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"reviews",
+						"secure",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -502,7 +579,7 @@
 		},
 		{
 			"key": "TOKEN",
-			"value": "eyJraWQiOiJrLWx1NlJhcmVNemtBcS1rLU5Hd0hrLUxGbW14U3NwSUxHamNKaGlJbHh3IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULlNfS2Rjc0ZIdHEyOTBBQzEtXzdHMnlNY1BiM28wQ0g0Nmw4WWxicnhUOFUiLCJpc3MiOiJodHRwczovL2Rldi0yMjQyMTQ3My5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2OTYyODMyOTEsImV4cCI6MTY5NjI4Njg5MSwiY2lkIjoiMG9hYm9sMGlwbk5QMVBlNlU1ZDciLCJ1aWQiOiIwMHVib2p3aHQ3SnZYd0lqNjVkNyIsInNjcCI6WyJlbWFpbCIsInByb2ZpbGUiLCJvcGVuaWQiXSwiYXV0aF90aW1lIjoxNjk2MjgzMjg5LCJzdWIiOiJ3QHEucnUifQ.UV-poeQb4ffeGBlKIHWAemGm0zw4_53QnGavrFTXCX8mh98IRre8tOw8bKfht0Rf1SDBeefJmpK2yzBOZ-oVH0fw9m7X-XKItw7hr6Zot8pwL7Oy9OkxTzSktn7SGD4asXL1L9W-reOV6C9gUOio-O30BRQB0muHYykVdP9fU4w6AEgAGqw52rC6GH-OyahIdW36N2xdVjjZCA6jDoJG4QGdYrgck5xxjcQWLaxk5svITydZkDeZ2Kc55k9G4N-oVcYpKxrxPir9xFwtW2_znVUSoS0a2_D9R67Ljsm2BJkoDF4ZP9ZCJQNulgOI8v-6iDINqUCH4X_aXMsG7fVFcw",
+			"value": "eyJraWQiOiI3UjhvQXhjQ0k0aUVIQW9rWTZ3QlVNamhLb2tLaGJKTE5LRXl0MHdxZFMwIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkxUX090cGFyWjZPWERYSjh2cENfTXlJb05nek16RUctcm1lY2lLbkF2SkUiLCJpc3MiOiJodHRwczovL2Rldi0xNDgxMDAwMi5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2OTM3NTA5MzcsImV4cCI6MTY5Mzc1NDUzNywiY2lkIjoiMG9hYjM1M2Y0a2pRdk5nUlM1ZDciLCJ1aWQiOiIwMHU5dWNtdmY4QnhTN0tuNDVkNyIsInNjcCI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiXSwiYXV0aF90aW1lIjoxNjkzNzUwOTM2LCJzdWIiOiJxQHcucnQifQ.yHG5JUZjSVnFY5K8_edfb1K78g6kKUoX4uXu_ZPp2k5B9jF2qm86zn37hIdU3tNLXRHmF7fA6h4HKFCaUb_pTvsIwUewFx5XTNyadhu9Xgmp5yvA89FSYYeVHNMtm6AyT6yh3KKg4O3-Zfx0hfZPlSAWvei4iV0bv26F6uqLiXU8arHBk9RReONU_C1qdpO_X7lX8UfULLKYPBfdZuysgqTHtUp9ykGo49CCoI4Dvl5N4xQtwsFqZPoitE-3dPlJafTz08sFJfSSoZaF9o2kBwWvAksJQU6XTQnuyh-9O3wFR9tq11gaJNLIwGM5zxaahKKOgrKKeY7iAXYi6CoxOg ",
 			"type": "string"
 		}
 	]
