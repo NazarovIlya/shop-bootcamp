@@ -17,7 +17,7 @@ public class ReviewService {
 
   private ReviewRepository reviewRepository;
 
-  public ReviewService(ReviewService reviewService) {
+  public ReviewService(ReviewRepository reviewRepository) {
     this.reviewRepository = reviewRepository;
   }
 
